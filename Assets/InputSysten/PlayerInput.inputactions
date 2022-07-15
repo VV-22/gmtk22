@@ -7,7 +7,7 @@
             "actions": [
                 {
                     "name": "KB",
-                    "type": "Value",
+                    "type": "PassThrough",
                     "id": "a9e4b0e7-6e54-4298-809c-cdfb0b4cc9f5",
                     "expectedControlType": "Vector2",
                     "processors": "",
@@ -22,6 +22,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Sprint",
+                    "type": "PassThrough",
+                    "id": "26b0e06c-57d0-4461-8567-feca1934b57d",
+                    "expectedControlType": "Digital",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -88,6 +97,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "mouse",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "54100a1c-62da-4036-a898-182ccc8cbb13",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Sprint",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

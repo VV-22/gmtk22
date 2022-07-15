@@ -29,7 +29,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
             ""actions"": [
                 {
                     ""name"": ""KB"",
-                    ""type"": ""Value"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""a9e4b0e7-6e54-4298-809c-cdfb0b4cc9f5"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
@@ -44,6 +44,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Sprint"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""26b0e06c-57d0-4461-8567-feca1934b57d"",
+                    ""expectedControlType"": ""Digital"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -112,6 +121,17 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""action"": ""mouse"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""54100a1c-62da-4036-a898-182ccc8cbb13"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -122,6 +142,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_movement = asset.FindActionMap("movement", throwIfNotFound: true);
         m_movement_KB = m_movement.FindAction("KB", throwIfNotFound: true);
         m_movement_mouse = m_movement.FindAction("mouse", throwIfNotFound: true);
+        m_movement_Sprint = m_movement.FindAction("Sprint", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -183,12 +204,14 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private IMovementActions m_MovementActionsCallbackInterface;
     private readonly InputAction m_movement_KB;
     private readonly InputAction m_movement_mouse;
+    private readonly InputAction m_movement_Sprint;
     public struct MovementActions
     {
         private @PlayerInput m_Wrapper;
         public MovementActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @KB => m_Wrapper.m_movement_KB;
         public InputAction @mouse => m_Wrapper.m_movement_mouse;
+        public InputAction @Sprint => m_Wrapper.m_movement_Sprint;
         public InputActionMap Get() { return m_Wrapper.m_movement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -204,6 +227,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @mouse.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnMouse;
                 @mouse.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnMouse;
                 @mouse.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnMouse;
+                @Sprint.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnSprint;
+                @Sprint.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnSprint;
+                @Sprint.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnSprint;
             }
             m_Wrapper.m_MovementActionsCallbackInterface = instance;
             if (instance != null)
@@ -214,6 +240,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @mouse.started += instance.OnMouse;
                 @mouse.performed += instance.OnMouse;
                 @mouse.canceled += instance.OnMouse;
+                @Sprint.started += instance.OnSprint;
+                @Sprint.performed += instance.OnSprint;
+                @Sprint.canceled += instance.OnSprint;
             }
         }
     }
@@ -222,5 +251,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     {
         void OnKB(InputAction.CallbackContext context);
         void OnMouse(InputAction.CallbackContext context);
+        void OnSprint(InputAction.CallbackContext context);
     }
 }

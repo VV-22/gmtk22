@@ -201,7 +201,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: 0.11559233, y: -0.000000017096998, z: 0.0000000019881916, w: 0.9932968}
+  m_LocalRotation: {x: 0.11559233, y: 0.000000017097316, z: -0.0000000019882287, w: 0.9932968}
   m_LocalPosition: {x: 0.976696, y: 2, z: 30.892597}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -460,7 +460,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 533364586}
-  m_LocalRotation: {x: 0.11559233, y: -0.000000017090727, z: 0.0000000019888893, w: 0.99329674}
+  m_LocalRotation: {x: 0.11559233, y: 0.000000017091047, z: -0.0000000019889261, w: 0.99329674}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1078,11 +1078,42 @@ MonoBehaviour:
   m_GameObject: {fileID: 1463171077}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58901fa0646ffe746bf792eacfe3d4b9, type: 3}
+  m_Script: {fileID: 11500000, guid: 7c5688de2ecf3e143903fd2d8ec54700, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  moveSpeed: 10
+  animator: {fileID: 1463171078}
+  ccon: {fileID: 1463171081}
+  moveSpeed: 5
+  sprintSpeed: 10
+  rotationSmoothTime: 0.1
+  acceleration: 5
+  jumpHeight: 1.5
+  customGravity: -15
+  jumpCD: 2
+  fallTimeout: 0.2
+  grounded: 0
+  groundedRadius: 0.5
+  groundedLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!143 &1463171081
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1463171077}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1001 &1465097960
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1446,7 +1477,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1940564239}
-  m_LocalRotation: {x: 0.13870122, y: 6e-45, z: -1e-45, w: 0.99033433}
+  m_LocalRotation: {x: 0.13870122, y: 1e-45, z: -0, w: 0.99033433}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
