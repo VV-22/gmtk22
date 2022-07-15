@@ -35,6 +35,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""mouse"",
+                    ""type"": ""Value"",
+                    ""id"": ""e4acd7dc-18a1-4aff-a1fe-dfd4566b1c83"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -92,6 +101,17 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""action"": ""KB"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""12bd5002-d318-4bad-b10d-18f05757f7da"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""mouse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -101,6 +121,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         // movement
         m_movement = asset.FindActionMap("movement", throwIfNotFound: true);
         m_movement_KB = m_movement.FindAction("KB", throwIfNotFound: true);
+        m_movement_mouse = m_movement.FindAction("mouse", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -161,11 +182,13 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_movement;
     private IMovementActions m_MovementActionsCallbackInterface;
     private readonly InputAction m_movement_KB;
+    private readonly InputAction m_movement_mouse;
     public struct MovementActions
     {
         private @PlayerInput m_Wrapper;
         public MovementActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @KB => m_Wrapper.m_movement_KB;
+        public InputAction @mouse => m_Wrapper.m_movement_mouse;
         public InputActionMap Get() { return m_Wrapper.m_movement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -178,6 +201,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @KB.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnKB;
                 @KB.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnKB;
                 @KB.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnKB;
+                @mouse.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnMouse;
+                @mouse.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnMouse;
+                @mouse.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnMouse;
             }
             m_Wrapper.m_MovementActionsCallbackInterface = instance;
             if (instance != null)
@@ -185,6 +211,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @KB.started += instance.OnKB;
                 @KB.performed += instance.OnKB;
                 @KB.canceled += instance.OnKB;
+                @mouse.started += instance.OnMouse;
+                @mouse.performed += instance.OnMouse;
+                @mouse.canceled += instance.OnMouse;
             }
         }
     }
@@ -192,5 +221,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     public interface IMovementActions
     {
         void OnKB(InputAction.CallbackContext context);
+        void OnMouse(InputAction.CallbackContext context);
     }
 }
