@@ -1089,13 +1089,14 @@ MonoBehaviour:
   acceleration: 5
   jumpHeight: 1.5
   customGravity: -15
-  jumpCD: 2
+  jumpCD: 0.5
   fallTimeout: 0.2
   grounded: 0
   groundedRadius: 0.5
   groundedLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 65536
+  groundedOffset: 0.1
 --- !u!143 &1463171081
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1111,7 +1112,7 @@ CharacterController:
   m_Radius: 0.5
   m_SlopeLimit: 45
   m_StepOffset: 0.3
-  m_SkinWidth: 0.08
+  m_SkinWidth: 0.01
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!1001 &1465097960
@@ -1322,7 +1323,7 @@ GameObject:
   - component: {fileID: 1801214689}
   - component: {fileID: 1801214688}
   - component: {fileID: 1801214687}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
