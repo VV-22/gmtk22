@@ -129,10 +129,7 @@ public class PlayerController : MonoBehaviour
                 
                 if (currentJump && jumptimeoutDelta <= 0.0f)
                 {
-                    // the square root of H * -2 * G = how much velocity needed to reach desired height
                     _verticalVelocity = Mathf.Sqrt(jumpHeight * -2f * customGravity);
-
-                    //need to update animator here
                     animator.SetBool("jump",true);
                 }
                 
@@ -157,12 +154,10 @@ public class PlayerController : MonoBehaviour
                 {
                     animator.SetBool("freefall",true);
                 }
-                /*
+                
                 // if we are not grounded, do not jump
-                _input.jump = false;
-                */
+                currentJump = false;   
             }
-
             // apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
             if (_verticalVelocity < _terminalVelocity)
             {
@@ -177,6 +172,7 @@ public class PlayerController : MonoBehaviour
                 transform.position.z);
             grounded = Physics.CheckSphere(spherePosition, groundedRadius, groundedLayerMask,
                 QueryTriggerInteraction.Ignore);
+                animator.SetBool("grounded", grounded);
         }
         private void Update()
         {
@@ -227,6 +223,7 @@ public class PlayerController : MonoBehaviour
             Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
             ccon.Move(targetDirection.normalized * (_speed * Time.deltaTime) +
                              new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+            animator.SetFloat("velocity", _animationBlend);
         }
 
 }
