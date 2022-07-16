@@ -201,7 +201,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: 0.11559233, y: -0.00000001709731, z: 0.0000000019882274, w: 0.9932968}
+  m_LocalRotation: {x: 0.11559233, y: 0.000000017097316, z: -0.0000000019882287, w: 0.9932968}
   m_LocalPosition: {x: 0.976696, y: 2, z: 30.892597}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -460,7 +460,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 533364586}
-  m_LocalRotation: {x: 0.11559233, y: -0.00000001709104, z: 0.0000000019889252, w: 0.99329674}
+  m_LocalRotation: {x: 0.11559233, y: 0.000000017091047, z: -0.0000000019889261, w: 0.99329674}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1096,7 +1096,7 @@ MonoBehaviour:
   groundedLayerMask:
     serializedVersion: 2
     m_Bits: 65536
-  groundedOffset: 0
+  groundedOffset: 0.1
 --- !u!143 &1463171081
 CharacterController:
   m_ObjectHideFlags: 0

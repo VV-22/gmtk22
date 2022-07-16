@@ -91,21 +91,21 @@ public class PlayerController : MonoBehaviour
 
     private void HandleMovement(Vector2 playerInput)
     {
-        //Debug.Log("Player Movement : " + playerInput);
+        Debug.Log("Player Movement : " + playerInput);
         currentInput = playerInput;
         //handle animations everytime player input is changed
-        if(playerInput.normalized.magnitude > 0.5f)
-        {
-            animator.SetBool(walkingHash,true);
-        }
-        else if(playerInput.normalized.magnitude <0.1f)
-        {
-            animator.SetBool(walkingHash,false);
-        }
+        // if(playerInput.normalized.magnitude > 0.5f)
+        // {
+        //     animator.SetBool(walkingHash,true);
+        // }
+        // else if(playerInput.normalized.magnitude <0.1f)
+        // {
+        //     animator.SetBool(walkingHash,false);
+        // }
     }
     private void HandleSprint(float sprint)
     {
-        Debug.Log("sprinting");
+        //Debug.Log("sprinting");
         currentSprint = sprint;
         //handle sprint animation here
         if(currentSprint > 0.2f) 
